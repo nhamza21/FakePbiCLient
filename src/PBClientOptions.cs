@@ -9,12 +9,12 @@ namespace SimpleFakePowerBiClient
     public class PBClientOptions
     {
         [Required]
-        public string ApiKey { get; set; } = "";
+        public string? ApiKey { get; set; }
         [Required]
-        public string UserSecret { get; set;} = "";
+        public string? UserSecret { get; set;}
         [Required]
-        public string UserName { get; set;} = "";
+        public string? UserName { get; set;}
         [Required]
-        public string ConnectionString { get; set; } = "";
+        public string? ConnectionString { get; set; }
     }
 }

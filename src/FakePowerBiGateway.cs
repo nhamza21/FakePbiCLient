@@ -8,7 +8,7 @@ namespace SimpleFakePowerBiClient;
 //to be replaced with you nuget package
 public class FakePowerBiGateway
 {
-    public FakePowerBiGateway(string apiKey, string connectionString, string userName, string userSecret)
+    public FakePowerBiGateway(string? apiKey, string? connectionString, string? userName, string? userSecret)
     {
 
     }

@@ -1,5 +1,6 @@
 using System.Net.Sockets;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 
 namespace SimpleFakePowerBiClient;
@@ -49,8 +50,9 @@ public static class PowerBiClientsServiceCollectionExtensions
 
     private static void AddPbiClientOptions(this IServiceCollection services, string optionName)
     {
-        services.AddOptions<PBClientOptions>()
+        services.AddOptions<PBClientOptions>(optionName)
                         .BindConfiguration($"PowerBiClients:{optionName}")
+                        .ValidateDataAnnotations()
                         .ValidateOnStart();
     }
 

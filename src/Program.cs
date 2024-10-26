@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using SimpleFakePowerBiClient;
 
 var configuration = new ConfigurationBuilder()
@@ -11,6 +12,7 @@ var serviceProvider = new ServiceCollection()
     .AddPowerBiClients()
     .AddSingleton<IConfiguration>(provider => configuration)
     .AddScoped<IPowerBiClientProvider, PowerBiClientProvider>()
+    .AddOptions()
     .BuildServiceProvider();
 
 var chokotom = serviceProvider.GetRequiredService<IPowerBiClientProvider>()
@@ -20,6 +22,8 @@ var chokotom = serviceProvider.GetRequiredService<IPowerBiClientProvider>()
 var major = serviceProvider.GetRequiredService<IPowerBiClientProvider>()
 .GetPowerBiClient("Major")
 .GetDocumentAsString("Major : 123456");
+
+
 
 Console.WriteLine($"Here is major document : {major}");
 Console.WriteLine($"Here is chokotom document : {chokotom}");
